@@ -3,8 +3,12 @@ package com.issc.second.entity;
 
 import javax.persistence.*;
 
+/**
+ * 商家
+ */
+
 @Entity
-@Table(name = "table")
+@Table(name = "bussiness")
 public class Bussiness {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

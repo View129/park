@@ -2,7 +2,9 @@ package com.issc.second.entity;
 
 
 import javax.persistence.*;
-
+/*
+ * 黑名单
+ */
 @Entity
 @Table(name = "blacklist")
 public class BlackList {
