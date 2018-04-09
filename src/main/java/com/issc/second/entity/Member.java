@@ -2,6 +2,9 @@ package com.issc.second.entity;
 
 import javax.persistence.*;
 
+/**
+ * 月租户
+ */
 @Entity
 @Table(name = "member")
 public class Member {

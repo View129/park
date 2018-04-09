@@ -3,6 +3,9 @@ package com.issc.second.entity;
 import javax.persistence.*;
 import java.sql.Date;
 
+/**
+ * 车辆进出信息
+ */
 @Entity
 @Table(name = "record")
 public class Record {

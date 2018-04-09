@@ -2,6 +2,10 @@ package com.issc.second.entity;
 
 import javax.persistence.*;
 
+/**
+ * 商家车辆信息
+ */
+
 @Entity
 @Table(name = "bussinesscar")
 public class BussinessCar {
