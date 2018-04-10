@@ -12,9 +12,9 @@ import java.sql.Date;
 public class MemberOrder {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
-    private long memberId;
+    private Long memberId;
 
     private String telephone;
 
@@ -24,19 +24,19 @@ public class MemberOrder {
 
     private String payStatus;
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
-    public long getMemberId() {
+    public Long getMemberId() {
         return memberId;
     }
 
-    public void setMemberId(long memberId) {
+    public void setMemberId(Long memberId) {
         this.memberId = memberId;
     }
 

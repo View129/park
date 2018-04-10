@@ -11,15 +11,15 @@ import java.sql.Date;
 public class Record {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
     private String carId;
 
     private String carSeatId;
 
-    private long entranceId;
+    private Long entranceId;
 
-    private long exitId;
+    private Long exitId;
 
     private Date  inTime;
 
@@ -29,11 +29,11 @@ public class Record {
 
     private String outImage;
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -53,19 +53,19 @@ public class Record {
         this.carSeatId = carSeatId;
     }
 
-    public long getEntranceId() {
+    public Long getEntranceId() {
         return entranceId;
     }
 
-    public void setEntranceId(long entranceId) {
+    public void setEntranceId(Long entranceId) {
         this.entranceId = entranceId;
     }
 
-    public long getExitId() {
+    public Long getExitId() {
         return exitId;
     }
 
-    public void setExitId(long exitId) {
+    public void setExitId(Long exitId) {
         this.exitId = exitId;
     }
 

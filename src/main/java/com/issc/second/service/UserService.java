@@ -17,4 +17,19 @@ public class UserService {
     public List<User> userList(){
         return userDao.findAll();
     }
+
+    //登录验证
+    public User login(String userName,String password){
+        return userDao.findByUserNameAndPassword(userName,password);
+    }
+
+    //修改密码
+    public void updatePassword(Long id,String password){
+        userDao.updateUserPassword(id,password);
+    }
+
+    //修改用户权限
+    public void updateRank(Long id,String rank){
+        userDao.updateUserRank(id,rank);
+    }
 }
