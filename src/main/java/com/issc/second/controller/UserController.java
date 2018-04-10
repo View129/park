@@ -19,7 +19,7 @@ public class UserController {
     UserService userService;
 
     //查询所有用户信息
-    @RequestMapping("/list")
+    @RequestMapping(value = "/list",produces= "text/html;charset=UTF-8")
     @ResponseBody
     public String userList(){
         List<User> list = userService.userList();
@@ -40,6 +40,7 @@ public class UserController {
         return JSON.toJSONString(msg);
     }
 
+
     //添加或修改用户信息
     @RequestMapping({"/update","/save"})
     @ResponseBody
@@ -54,6 +55,32 @@ public class UserController {
         }
         return JSON.toJSONString(msg);
     }
+
+    //新增用户，判断用户名是否重复
+    @ResponseBody
+    @RequestMapping("/insert")
+    public String insertUser(User user){
+        User user1 = userService.findByUsername(user.getUserName());
+        Msg msg = null;
+        if(user1==null){
+            user1 = userService.modifyUser(user);
+            if(user1!=null){
+                msg = Msg.SUCCESS;
+            }
+        }else{
+            msg = Msg.ERROR;
+        }
+        return JSON.toJSONString(msg);
+    }
+
+    //根据id删除用户
+    @ResponseBody
+    @RequestMapping("/delete")
+    public String deleteUser(Long id){
+        Msg msg = userService.deleteUser(id);
+        return JSON.toJSONString(msg);
+    }
+}
 
 
 //    //根据id修改密码
@@ -83,6 +110,3 @@ public class UserController {
 //        }
 //        return JSON.toJSONString(msg);
 //    }
-
-
-}

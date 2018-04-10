@@ -1,6 +1,7 @@
 package com.issc.second.service;
 
 import com.issc.second.dao.UserDao;
+import com.issc.second.entity.Msg;
 import com.issc.second.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -28,6 +29,25 @@ public class UserService {
         return userDao.save(user);
     }
 
+    //查询某用户是否存在
+    public User findByUsername(String userName){
+        return userDao.findByUserName(userName);
+    }
+
+    //根据id删除用户
+    public Msg deleteUser(Long id){
+        Msg msg = null;
+        try{
+            userDao.delete(id);
+        }catch(Exception e){
+            msg = Msg.ERROR;
+        }
+        msg = Msg.SUCCESS;
+        return msg;
+    }
+
+}
+
 
 //    //根据id修改密码
 //    public int updatePassword(Long id,String password){
@@ -40,6 +60,3 @@ public class UserService {
 //        int count = userDao.updateUserRank(id,rank);
 //        return count;
 //    }
-
-
-}
