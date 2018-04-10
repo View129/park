@@ -31,12 +31,58 @@ public class UserController {
     @ResponseBody
     public String login(String userName,String password){
         User user = userService.login(userName,password);
-        Msg response = null;
+        Msg msg = null;
         if(user!=null){
-            response = Msg.SUCCESS;
+            msg = Msg.SUCCESS;
         }else{
-            response = Msg.ERROR;
+            msg = Msg.ERROR;
         }
-        return JSON.toJSONString(response);
+        return JSON.toJSONString(msg);
     }
+
+    //添加或修改用户信息
+    @RequestMapping({"/update","/save"})
+    @ResponseBody
+    public String modifyUser(User user){
+        System.out.println(user.getUserName());
+        User u = userService.modifyUser(user);
+        Msg msg = null;
+        if(u!=null){
+            msg = Msg.SUCCESS;
+        }else{
+            msg = Msg.ERROR;
+        }
+        return JSON.toJSONString(msg);
+    }
+
+
+//    //根据id修改密码
+//    @RequestMapping("/updatepass")
+//    @ResponseBody
+//    public String updatePassword(Long id,String password){
+//        int count = userService.updatePassword(id,password);
+//        Msg msg = null;
+//        if(count>0){
+//            msg = Msg.SUCCESS;
+//        }else{
+//            msg = Msg.ERROR;
+//        }
+//        return JSON.toJSONString(msg);
+//    }
+//
+//    //根据id修改用户权限
+//    @RequestMapping("/updatepass")
+//    @ResponseBody
+//    public String updateRank(Long id,String rank){
+//        int count = userService.updateRank(id,rank);
+//        Msg msg = null;
+//        if(count>0){
+//            msg = Msg.SUCCESS;
+//        }else{
+//            msg = Msg.ERROR;
+//        }
+//        return JSON.toJSONString(msg);
+//    }
+
+
 }

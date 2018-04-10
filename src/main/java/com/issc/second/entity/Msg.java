@@ -3,13 +3,13 @@ package com.issc.second.entity;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Msg {
+public class Msg <T>{
 
     private int code;
 
     private String message;
 
-    private Map<String,Object> map = new HashMap<String,Object>();
+    private Map<String,T> map = new HashMap<String,T>();
 
     public static final Msg ERROR = new Msg(0,"error");
     public static final Msg SUCCESS = new Msg(1,"success");
@@ -19,7 +19,7 @@ public class Msg {
         this.message = message;
     }
 
-    public Msg add(String key,Object value){
+    public Msg add(String key,T value){
         this.getMap().put(key,value);
         return this;
     }
@@ -43,11 +43,11 @@ public class Msg {
         this.message = message;
     }
 
-    public Map<String, Object> getMap() {
+    public Map<String, T> getMap() {
         return map;
     }
 
-    public void setMap(Map<String, Object> map) {
+    public void setMap(Map<String, T> map) {
         this.map = map;
     }
 }
