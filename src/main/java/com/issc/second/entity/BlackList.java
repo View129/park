@@ -8,7 +8,6 @@ import javax.persistence.*;
 @Entity
 @Table(name = "blacklist")
 public class BlackList {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY )
     private long id;
