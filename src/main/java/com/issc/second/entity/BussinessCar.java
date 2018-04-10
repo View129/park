@@ -11,9 +11,9 @@ import javax.persistence.*;
 public class BussinessCar {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
-    private long bussinessId;
+    private Long bussinessId;
 
     private String carId;
 
@@ -23,19 +23,19 @@ public class BussinessCar {
 
     private String description;
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
-    public long getBussinessId() {
+    public Long getBussinessId() {
         return bussinessId;
     }
 
-    public void setBussinessId(long bussinessId) {
+    public void setBussinessId(Long bussinessId) {
         this.bussinessId = bussinessId;
     }
 
