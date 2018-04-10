@@ -14,6 +14,9 @@ public interface UserDao extends JpaRepository<User,Long>{
     //登录验证
     User findByUserNameAndPassword(String userName,String password);
 
+    //查询某用户是否存在
+    User findByUserName(String userName);
+
 //    //根据id修改密码
 //    @Modifying
 //    @Transactional

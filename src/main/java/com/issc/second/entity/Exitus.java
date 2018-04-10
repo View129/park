@@ -6,8 +6,8 @@ import javax.persistence.*;
  * 出口
  */
 @Entity
-@Table(name = "exit")
-public class Exit {
+@Table(name = "exitus")
+public class Exitus {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

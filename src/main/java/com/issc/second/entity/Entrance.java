@@ -12,7 +12,7 @@ public class Entrance {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String entrancename;
+    private String entranceName;
 
     private String position;
 
@@ -26,12 +26,12 @@ public class Entrance {
         this.id = id;
     }
 
-    public String getEntrancename() {
-        return entrancename;
+    public String getentranceName() {
+        return entranceName;
     }
 
-    public void setEntrancename(String entrancename) {
-        this.entrancename = entrancename;
+    public void setEntranceName(String entranceName) {
+        this.entranceName = entranceName;
     }
 
     public String getPosition() {
