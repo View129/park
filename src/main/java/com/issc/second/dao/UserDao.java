@@ -11,19 +11,20 @@ import org.springframework.transaction.annotation.Transactional;
 @Repository
 public interface UserDao extends JpaRepository<User,Long>{
 
+    //登录验证
     User findByUserNameAndPassword(String userName,String password);
 
-    //修改密码
-    @Modifying
-    @Transactional
-    @Query(value = "UPDATE User u SET u.password = :password WHERE id=:id")
-    void updateUserPassword(@Param("id")Long id, @Param("password") String password);
-
-    //修改用户权限
-    @Modifying
-    @Transactional
-    @Query(value = "UPDATE User u SET u.rank = :rank WHERE id=:id")
-    void updateUserRank(@Param("id")Long id, @Param("rank") String rank);
+//    //根据id修改密码
+//    @Modifying
+//    @Transactional
+//    @Query(value = "UPDATE User u SET u.password = :password WHERE id=:id")
+//    int updateUserPassword(@Param("id")Long id, @Param("password") String password);
+//
+//    //根据id修改用户权限
+//    @Modifying
+//    @Transactional
+//    @Query(value = "UPDATE User u SET u.rank = :rank WHERE id=:id")
+//    int updateUserRank(@Param("id")Long id, @Param("rank") String rank);
 
 
 }

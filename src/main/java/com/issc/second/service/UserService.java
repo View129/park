@@ -13,7 +13,7 @@ public class UserService {
     @Autowired
     UserDao userDao;
 
-    //查询所有信息
+    //查询所有用户信息
     public List<User> userList(){
         return userDao.findAll();
     }
@@ -23,13 +23,23 @@ public class UserService {
         return userDao.findByUserNameAndPassword(userName,password);
     }
 
-    //修改密码
-    public void updatePassword(Long id,String password){
-        userDao.updateUserPassword(id,password);
+    //添加用户信息,只要返回值不为空则添加成功
+    public User modifyUser(User user){
+        return userDao.save(user);
     }
 
-    //修改用户权限
-    public void updateRank(Long id,String rank){
-        userDao.updateUserRank(id,rank);
-    }
+
+//    //根据id修改密码
+//    public int updatePassword(Long id,String password){
+//        int count = userDao.updateUserPassword(id,password);
+//        return count;
+//    }
+//
+//    //根据id修改用户权限
+//    public int updateRank(Long id,String rank){
+//        int count = userDao.updateUserRank(id,rank);
+//        return count;
+//    }
+
+
 }
