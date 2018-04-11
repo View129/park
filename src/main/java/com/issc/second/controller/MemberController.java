@@ -33,7 +33,7 @@ public class MemberController {
         return JSON.toJSONString(msg);
     }
     //新增
-    @RequestMapping(value = "/add",produces="text/html;charset=UTF-8")
+    @RequestMapping(value = {"/save","/update"},produces="text/html;charset=UTF-8")
     @ResponseBody
     public String add(Member member){
         Msg msg =  memberService.add(member);
