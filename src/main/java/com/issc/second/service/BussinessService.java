@@ -22,9 +22,9 @@ public class BussinessService {
     public Msg add(Bussiness bussiness){
         Bussiness bs = bussinessDao.save(bussiness);
         if (bs!=null){
-            return Msg.SUCCESS;
+            return Msg.setSuccess();
         }else{
-            return Msg.ERROR;
+            return Msg.setError();
         }
     }
 
@@ -37,9 +37,9 @@ public class BussinessService {
         try {
             bussinessDao.delete(id);
         }catch (Exception e){
-            return Msg.SUCCESS;
+            return Msg.setSuccess();
         }
-        return Msg.ERROR;
+        return Msg.setError();
 
     }
 
@@ -51,9 +51,9 @@ public class BussinessService {
         List<Bussiness> li = bussinessDao.findAll();
         Msg msg = null;
         if(li.size()>0){
-            msg=Msg.SUCCESS;
+            msg=Msg.setSuccess();
         }else {
-            msg=Msg.ERROR;
+            msg=Msg.setError();
         }
         msg.add("list",li);
         return msg;

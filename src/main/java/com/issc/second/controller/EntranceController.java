@@ -21,14 +21,7 @@ public class EntranceController {
     @RequestMapping(value = "/list",produces= "text/html;charset=UTF-8")
     @ResponseBody
     public String entranceList(){
-        List<Entrance>list = entranceService.entranceList();
-        Msg msg = null;
-        if(list!=null){
-            msg = Msg.SUCCESS;
-        }else{
-            msg = Msg.ERROR;
-        }
-        msg.add("list",list);
+        Msg<Entrance>msg = entranceService.entranceList();
         return JSON.toJSONString(msg);
     }
 
@@ -36,13 +29,7 @@ public class EntranceController {
     @RequestMapping({"/update","/save"})
     @ResponseBody
     public String entranceModify(Entrance entrance){
-        Entrance entrance1 = entranceService.modify(entrance);
-        Msg msg = null;
-        if(entrance1!=null){
-            msg = Msg.SUCCESS;
-        }else {
-            msg = Msg.ERROR;
-        }
+        Msg<Entrance>msg = entranceService.modify(entrance);
         return JSON.toJSONString(msg);
     }
 

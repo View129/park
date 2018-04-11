@@ -22,21 +22,15 @@ public class UserController {
     @RequestMapping(value = "/list",produces= "text/html;charset=UTF-8")
     @ResponseBody
     public String userList(){
-        List<User> list = userService.userList();
-        return JSON.toJSONString(Msg.SUCCESS.add("list",list));
+        Msg<User> msg = userService.userList();
+        return JSON.toJSONString(msg);
     }
 
     //验证登录信息
     @RequestMapping("/login")
     @ResponseBody
     public String login(String userName,String password){
-        User user = userService.login(userName,password);
-        Msg msg = null;
-        if(user!=null){
-            msg = Msg.SUCCESS;
-        }else{
-            msg = Msg.ERROR;
-        }
+        Msg<User> msg = userService.login(userName,password);
         return JSON.toJSONString(msg);
     }
 
@@ -45,14 +39,7 @@ public class UserController {
     @RequestMapping({"/update","/save"})
     @ResponseBody
     public String modifyUser(User user){
-        System.out.println(user.getUserName());
-        User u = userService.modifyUser(user);
-        Msg msg = null;
-        if(u!=null){
-            msg = Msg.SUCCESS;
-        }else{
-            msg = Msg.ERROR;
-        }
+        Msg<User>msg = userService.modifyUser(user);
         return JSON.toJSONString(msg);
     }
 
@@ -62,13 +49,8 @@ public class UserController {
     public String insertUser(User user){
         User user1 = userService.findByUsername(user.getUserName());
         Msg msg = null;
-        if(user1==null){
-            user1 = userService.modifyUser(user);
-            if(user1!=null){
-                msg = Msg.SUCCESS;
-            }
-        }else{
-            msg = Msg.ERROR;
+        if(user1==null) {
+            msg = userService.modifyUser(user);
         }
         return JSON.toJSONString(msg);
     }

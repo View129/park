@@ -23,14 +23,7 @@ public class CarSeatController {
     @RequestMapping(value = "/list",produces= "text/html;charset=UTF-8")
     @ResponseBody
     public String carSeatList(){
-        List<CarSeat> list = carSeatService.carSeatList();
-        Msg msg = null;
-        if(list!=null){
-            msg = Msg.SUCCESS;
-        }else{
-            msg = Msg.ERROR;
-        }
-        msg.add("list",list);
+        Msg msg = carSeatService.carSeatList();
         return JSON.toJSONString(msg);
     }
 
@@ -38,13 +31,7 @@ public class CarSeatController {
     @RequestMapping({"/update","/save"})
     @ResponseBody
     public String modifyCarSeat(CarSeat carSeat){
-        CarSeat carSeat1 = carSeatService.modifyCarSeat(carSeat);
-        Msg msg = null;
-        if(carSeat1!=null){
-            msg = Msg.SUCCESS;
-        }else{
-            msg = Msg.ERROR;
-        }
+        Msg<CarSeat>msg = carSeatService.modifyCarSeat(carSeat);
         return JSON.toJSONString(msg);
     }
 

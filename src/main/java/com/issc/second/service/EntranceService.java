@@ -15,14 +15,28 @@ public class EntranceService {
     EntranceDao entranceDao;
 
     //查询所有入口信息
-    public List<Entrance> entranceList(){
+    public Msg<Entrance> entranceList(){
         List<Entrance>list = entranceDao.findAll();
-        return list;
+        Msg msg = null;
+        if(list.size()>0){
+            msg = Msg.setSuccess();
+            msg.add("list",list);
+        }else{
+            msg =Msg.setError();
+        }
+        return msg;
     }
 
     //增加或修改入口信息
-    public Entrance modify(Entrance entrance){
-        return entranceDao.save(entrance);
+    public Msg<Entrance> modify(Entrance entrance){
+        Entrance entrance1 = entranceDao.save(entrance);
+        Msg msg = null;
+        if(entrance1!=null){
+            msg = Msg.setSuccess();
+        }else {
+            msg = Msg.setError();
+        }
+        return msg;
     }
 
     //根据id删除入口信息
@@ -31,10 +45,10 @@ public class EntranceService {
         try{
             entranceDao.delete(id);
         }catch (Exception e){
-            msg = Msg.ERROR;
+            msg = Msg.setError();
             return msg;
         }
-        msg = Msg.SUCCESS;
+        msg = Msg.setSuccess();
         return msg;
     }
 }

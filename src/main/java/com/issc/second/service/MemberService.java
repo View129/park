@@ -23,9 +23,9 @@ public class MemberService {
     public Msg add(Member member){
         Member mb = memberDao.save(member);
         if(mb!=null){
-            return Msg.SUCCESS;
+            return Msg.setSuccess();
         }else{
-            return Msg.ERROR;
+            return Msg.setError();
         }
     }
 
@@ -38,9 +38,9 @@ public class MemberService {
         try {
             memberDao.delete(id);
         }catch (Exception e){
-            return Msg.ERROR;
+            return Msg.setError();
         }
-        return Msg.SUCCESS;
+        return Msg.setSuccess();
 
     }
 
@@ -52,9 +52,9 @@ public class MemberService {
         List<Member> li = memberDao.findAll();
         Msg msg = null;
         if(li.size()>0){
-            msg=Msg.SUCCESS;
+            msg=Msg.setSuccess();
         }else {
-            msg=Msg.ERROR;
+            msg=Msg.setError();
         }
         msg.add("list",li);
         return msg;

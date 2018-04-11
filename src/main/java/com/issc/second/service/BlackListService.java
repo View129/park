@@ -21,9 +21,9 @@ public class BlackListService {
     public Msg find(String cardId){
         BlackList blackList = blackListDao.findByCardId(cardId);
         if(blackList!=null){
-            return Msg.SUCCESS;
+            return Msg.setSuccess();
         }else {
-            return Msg.ERROR;
+            return Msg.setError();
         }
     }
 
@@ -39,9 +39,9 @@ public class BlackListService {
         blackList.setDescription(description);
         BlackList bk = blackListDao.save(blackList);
         if (bk!=null){
-            return Msg.SUCCESS;
+            return Msg.setSuccess();
         }else{
-            return Msg.ERROR;
+            return Msg.setError();
         }
     }
 
@@ -54,9 +54,9 @@ public class BlackListService {
         try {
             blackListDao.delete(id);
         }catch (Exception e){
-            return Msg.SUCCESS;
+            return Msg.setSuccess();
         }
-            return Msg.ERROR;
+            return Msg.setError();
 
     }
 }
