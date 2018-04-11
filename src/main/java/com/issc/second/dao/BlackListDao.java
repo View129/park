@@ -9,4 +9,5 @@ public interface BlackListDao extends JpaRepository<BlackList,Long> {
 
     //根据车牌查询黑名单
     BlackList findByCardId(String CardId);
+
 }
