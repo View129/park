@@ -39,6 +39,6 @@ public class BussinessCarController {
     @ResponseBody
     public String modifyBussinessCar(BussinessCar bussinessCar){
         Msg msg = bussinessCarService.modifyBussinesscar(bussinessCar);
-        return JSON.toJSONString(bussinessCar);
+        return JSON.toJSONString(msg);
     }
 }

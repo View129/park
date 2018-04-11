@@ -1,27 +1,28 @@
 package com.issc.second.service;
 
-import com.issc.second.dao.BussinessDao;
-import com.issc.second.entity.Bussiness;
+import com.issc.second.dao.MemberDao;
+import com.issc.second.entity.Member;
 import com.issc.second.entity.Msg;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+/**
+ * 月租户
+ */
 @Service
-public class BussinessService {
+public class MemberService {
     @Autowired
-    BussinessDao bussinessDao;
+    MemberDao memberDao;
 
     /**
-     * 新增商家用户
+     * 新增月住户
      * @return
      */
-    @Modifying
-    public Msg add(Bussiness bussiness){
-        Bussiness bs = bussinessDao.save(bussiness);
-        if (bs!=null){
+    public Msg add(Member member){
+        Member mb = memberDao.save(member);
+        if(mb!=null){
             return Msg.setSuccess();
         }else{
             return Msg.setError();
@@ -29,26 +30,26 @@ public class BussinessService {
     }
 
     /**
-     * 删除商家用户
+     * 删除月租户
      * @param id
      * @return
      */
     public Msg del(Long id){
         try {
-            bussinessDao.delete(id);
+            memberDao.delete(id);
         }catch (Exception e){
-            return Msg.setSuccess();
+            return Msg.setError();
         }
-        return Msg.setError();
+        return Msg.setSuccess();
 
     }
 
     /**
-     * 显示所有商家用户信息
+     * 查询所有月租户
      * @return
      */
-    public Msg<Bussiness> list(){
-        List<Bussiness> li = bussinessDao.findAll();
+    public Msg<Member> list(){
+        List<Member> li = memberDao.findAll();
         Msg msg = null;
         if(li.size()>0){
             msg=Msg.setSuccess();
@@ -58,4 +59,7 @@ public class BussinessService {
         msg.add("list",li);
         return msg;
     }
+
+
+
 }

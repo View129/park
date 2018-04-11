@@ -18,6 +18,11 @@ public class UserController {
     @Autowired
     UserService userService;
 
+    @RequestMapping
+    public String login(){
+        return "login";
+    }
+
     //查询所有用户信息
     @RequestMapping(value = "/list",produces= "text/html;charset=UTF-8")
     @ResponseBody

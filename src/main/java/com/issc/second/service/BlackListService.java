@@ -2,6 +2,7 @@ package com.issc.second.service;
 
 import com.issc.second.dao.BlackListDao;
 import com.issc.second.entity.BlackList;
+import com.issc.second.entity.Msg;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,12 +18,12 @@ public class BlackListService {
      * @param cardId
      * @return  是黑名单车辆 返回 1  不是 返回 0
      */
-    public String find(String cardId){
+    public Msg find(String cardId){
         BlackList blackList = blackListDao.findByCardId(cardId);
         if(blackList!=null){
-            return "1";
+            return Msg.setSuccess();
         }else {
-            return "0";
+            return Msg.setError();
         }
     }
 
@@ -32,15 +33,15 @@ public class BlackListService {
      * @param description
      * @return
      */
-    public String add(String cardId,String description){
+    public Msg add(String cardId,String description){
         BlackList blackList= new BlackList();
         blackList.setCardId(cardId);
         blackList.setDescription(description);
         BlackList bk = blackListDao.save(blackList);
         if (bk!=null){
-            return "成功";
+            return Msg.setSuccess();
         }else{
-            return "失败";
+            return Msg.setError();
         }
     }
 
@@ -49,13 +50,13 @@ public class BlackListService {
      * @param id
      * @return
      */
-    public String del(Long id){
+    public Msg del(Long id){
         try {
             blackListDao.delete(id);
         }catch (Exception e){
-            return "失败";
+            return Msg.setSuccess();
         }
-            return "成功";
+            return Msg.setError();
 
     }
 }

@@ -1,6 +1,8 @@
 package com.issc.second.controller;
 
+import com.alibaba.fastjson.JSON;
 import com.issc.second.dao.BlackListDao;
+import com.issc.second.entity.Msg;
 import com.issc.second.service.BlackListService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,14 +20,16 @@ public class BlackListController {
     @RequestMapping("/find")
     @ResponseBody
     public String find(String cardId){
-        return (String) blackListService.find(cardId);
+        Msg msg =  blackListService.find(cardId);
+        return JSON.toJSONString(msg);
     }
 
     //新增黑名单
     @RequestMapping(value = "/add",produces="text/html;charset=UTF-8")
     @ResponseBody
     public String add(String cardId,String description){
-        return  blackListService.add(cardId,description);
+        Msg msg =  blackListService.add(cardId,description);
+        return JSON.toJSONString(msg);
     }
 
     //删除黑名单
@@ -33,7 +37,8 @@ public class BlackListController {
     @ResponseBody
     public String del(String id){
         System.out.println(id);
-        return  blackListService.del(Long.parseLong(id));
+        Msg msg =  blackListService.del(Long.parseLong(id));
+        return JSON.toJSONString(msg);
     }
 
 }
