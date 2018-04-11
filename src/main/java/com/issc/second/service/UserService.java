@@ -15,18 +15,40 @@ public class UserService {
     UserDao userDao;
 
     //查询所有用户信息
-    public List<User> userList(){
-        return userDao.findAll();
+    public Msg<User> userList(){
+        List<User>list = userDao.findAll();
+        Msg msg = null;
+        if(list.size()>0){
+            msg = Msg.setSuccess();
+            msg.add("list",list);
+        }else{
+            msg =Msg.setError();
+        }
+        return msg;
     }
 
     //登录验证
-    public User login(String userName,String password){
-        return userDao.findByUserNameAndPassword(userName,password);
+    public Msg<User> login(String userName,String password){
+        User user = userDao.findByUserNameAndPassword(userName,password);
+        Msg msg = null;
+        if(user!=null){
+            msg = Msg.setSuccess();
+        }else{
+            msg = Msg.setError();
+        }
+        return msg;
     }
 
-    //添加用户信息,只要返回值不为空则添加成功
-    public User modifyUser(User user){
-        return userDao.save(user);
+    //添加或修改用户信息
+    public Msg<User> modifyUser(User user){
+        User u = userDao.save(user);
+        Msg msg = null;
+        if(u!=null){
+            msg = Msg.setSuccess();
+        }else{
+            msg = Msg.setError();
+        }
+        return msg;
     }
 
     //查询某用户是否存在
@@ -40,9 +62,10 @@ public class UserService {
         try{
             userDao.delete(id);
         }catch(Exception e){
-            msg = Msg.ERROR;
+            msg = Msg.setError();
+            return msg;
         }
-        msg = Msg.SUCCESS;
+        msg = Msg.setSuccess();
         return msg;
     }
 

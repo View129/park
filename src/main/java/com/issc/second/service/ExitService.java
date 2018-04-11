@@ -15,14 +15,28 @@ public class ExitService {
     ExitDao exitDao;
 
     //查询所有出口信息
-    public List<Exitus> exitList(){
+    public Msg<Exitus> exitList(){
         List<Exitus>list = exitDao.findAll();
-        return list;
+        Msg msg = null;
+        if(list.size()>0){
+            msg = Msg.setSuccess();
+            msg.add("list",list);
+        }else{
+            msg =Msg.setError();
+        }
+        return msg;
     }
 
     //增加或修改出口信息
-    public Exitus modify(Exitus exitus){
-        return exitDao.save(exitus);
+    public Msg<Exitus> modify(Exitus exitus){
+        Exitus exitus1 = exitDao.save(exitus);
+        Msg msg = null;
+        if(exitus1 !=null){
+            msg = Msg.setSuccess();
+        }else {
+            msg = Msg.setError();
+        }
+        return msg;
     }
 
     //根据id删除出口信息
@@ -31,10 +45,10 @@ public class ExitService {
         try{
             exitDao.delete(id);
         }catch (Exception e){
-            msg = Msg.ERROR;
+            msg = Msg.setError();
             return msg;
         }
-        msg = Msg.SUCCESS;
+        msg = Msg.setSuccess();
         return msg;
     }
 }

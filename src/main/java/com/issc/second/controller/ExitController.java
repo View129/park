@@ -21,14 +21,7 @@ public class ExitController {
     @RequestMapping(value = "/list",produces= "text/html;charset=UTF-8")
     @ResponseBody
     public String entranceList(){
-        List<Exitus>list = exitService.exitList();
-        Msg msg = null;
-        if(list!=null){
-            msg = Msg.SUCCESS;
-        }else{
-            msg = Msg.ERROR;
-        }
-        msg.add("list",list);
+        Msg msg = exitService.exitList();
         return JSON.toJSONString(msg);
     }
 
@@ -36,13 +29,7 @@ public class ExitController {
     @RequestMapping({"/update","save"})
     @ResponseBody
     public String entranceModify(Exitus exitus){
-        Exitus exitus1 = exitService.modify(exitus);
-        Msg msg = null;
-        if(exitus1 !=null){
-            msg = Msg.SUCCESS;
-        }else {
-            msg = Msg.ERROR;
-        }
+        Msg<Exitus> msg = exitService.modify(exitus);
         return JSON.toJSONString(msg);
     }
 

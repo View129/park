@@ -56,9 +56,9 @@ public class BussinessService {
         List<Bussiness> li = bussinessDao.findAll();
         Msg msg = null;
         if(li.size()>0){
-            msg=Msg.SUCCESS;
+            msg=Msg.setSuccess();
         }else {
-            msg=Msg.ERROR;
+            msg=Msg.setError();
         }
         msg.add("list",li);
         return msg;

@@ -15,15 +15,28 @@ public class CarSeatService {
     CarSeatDao carSeatDao;
 
     //查询所有车位信息
-    public List<CarSeat> carSeatList(){
+    public Msg<CarSeat> carSeatList(){
         List<CarSeat>list = carSeatDao.findAll();
-        return list;
+        Msg msg = null;
+        if(list.size()>0){
+            msg = Msg.setSuccess();
+            msg.add("list",list);
+        }else{
+            msg =Msg.setError();
+        }
+        return msg;
     }
 
     //增加或修改车位信息
-    public CarSeat modifyCarSeat(CarSeat carSeat){
+    public Msg<CarSeat> modifyCarSeat(CarSeat carSeat){
         CarSeat carSeat1 = carSeatDao.save(carSeat);
-        return carSeat1;
+        Msg msg = null;
+        if(carSeat1!=null){
+            msg = Msg.setSuccess();
+        }else{
+            msg = Msg.setError();
+        }
+        return msg;
     }
 
     //删除车位信息
@@ -32,9 +45,10 @@ public class CarSeatService {
         try{
             carSeatDao.delete(id);
         }catch(Exception e){
-            msg = Msg.ERROR;
+            msg = Msg.setError();
+            return msg;
         }
-        msg = Msg.SUCCESS;
+        msg = Msg.setSuccess();
         return msg;
     }
 }
