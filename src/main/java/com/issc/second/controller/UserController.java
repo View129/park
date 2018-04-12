@@ -20,7 +20,7 @@ public class UserController {
 
     @RequestMapping
     public String login(){
-        return "login";
+        return "userList";
     }
 
     //查询所有用户信息
