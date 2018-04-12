@@ -9,7 +9,7 @@
 
 <div class="logo_box">
     <h1>车辆管理系统</h1>
-    <form action="login" method="post" autocomplete="off">
+    <form  autocomplete="off">
 
         <div class="input_outer">
             <i class="fa fa-user-o u_user"></i>
@@ -29,5 +29,24 @@
 
     </form>
 </div>
+<script src="/resources/js/jquery-2.1.1.min.js" type="text/javascript"></script>
+<script>
+
+    $('.submit').click(function (event) {
+        event.preventDefault();
+        $.ajax({
+            type: "POST",
+            url: "/user/login",
+            data: $("form").serialize(),
+            success: function (data) {
+                if(data.code===0){
+                    alert("账户密码不匹配！请从新登陆");
+                }else {
+                    window.location.href="https://www.2345.com";
+                }
+            },
+            dataType: "json"});
+    });
+</script>
 </body>
 </html>

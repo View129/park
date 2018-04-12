@@ -9,7 +9,7 @@ public class Msg<T>{
 
     private String message;
 
-    private Map<String,T> map = new HashMap<String,T>();
+    private T data ;
 
     public static Msg setSuccess(){
         return new Msg(1,"SUCCESS");
@@ -25,9 +25,14 @@ public class Msg<T>{
     }
 
     public Msg add(String key, T value){
-        this.getMap().put(key,value);
+        this.setData(value);
         return this;
     }
+    public Msg add(T value){
+        this.setData(value);
+        return this;
+    }
+
 
     public Msg() {
     }
@@ -48,11 +53,11 @@ public class Msg<T>{
         this.message = message;
     }
 
-    public Map<String, T> getMap() {
-        return map;
+    public T getData() {
+        return data;
     }
 
-    public void setMap(Map<String, T> map) {
-        this.map = map;
+    public void setData(T data) {
+        this.data = data;
     }
 }
