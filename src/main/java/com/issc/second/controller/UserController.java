@@ -1,12 +1,15 @@
 package com.issc.second.controller;
 
 import com.alibaba.fastjson.JSON;
+import com.issc.second.entity.DataGrid;
 import com.issc.second.entity.Msg;
 import com.issc.second.entity.User;
 import com.issc.second.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
@@ -26,9 +29,15 @@ public class UserController {
     //查询所有用户信息
     @RequestMapping(value = "/list",produces= "text/html;charset=UTF-8")
     @ResponseBody
-    public String userList(){
-        Msg<User> msg = userService.userList();
-        return JSON.toJSONString(msg);
+    public String userList(@RequestParam(defaultValue ="1") String page, @RequestParam(defaultValue = "10") String rows,
+                           @RequestParam(defaultValue = "id") String sort, @RequestParam(defaultValue = "asc") String order){
+        Page<User> msg = userService.userList(page,rows,sort,order);
+
+        DataGrid dataGrid = new DataGrid<>();
+        dataGrid.setRows(msg.getContent());
+        dataGrid.setTotal(msg.getTotalElements());
+
+        return JSON.toJSONString(dataGrid);
     }
 
     //验证登录信息
