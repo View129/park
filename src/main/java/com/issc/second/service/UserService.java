@@ -8,9 +8,13 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.data.jpa.domain.Specification;
+import org.springframework.data.jpa.domain.Specifications;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.persistence.criteria.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -20,10 +24,11 @@ public class UserService {
     UserDao userDao;
 
     //查询所有用户信息
-    public Page<User> userList(String page, String pageSize,String sortt,String order){
+    public Page<User> userList(String userName,String rank,String page, String pageSize,String sortt,String order){
         Sort sort = new Sort(order.equals("asc")?Sort.Direction.ASC:Sort.Direction.DESC, sortt);
         Pageable pageable = new PageRequest(Integer.valueOf(page)-1,Integer.valueOf(pageSize),sort);
-        Page<User> list = userDao.findAll(pageable);
+
+        Page<User> list = userDao.findAll(Specifications.where(getWhere(userName,rank)),pageable);
         return list;
     }
 
@@ -68,5 +73,29 @@ public class UserService {
         }
         msg = Msg.setSuccess();
         return msg;
+    }
+
+
+
+    private Specification<User> getWhere(String userName,String rank){
+        return new Specification<User>() {
+            @Override
+            public Predicate toPredicate(Root<User> root, CriteriaQuery<?> criteriaQuery, CriteriaBuilder criteriaBuilder) {
+                List<Predicate> list = new ArrayList<>();
+
+                if(userName!=null&&userName!=""){
+
+                    Path path = root.get("userName");
+                    list.add(criteriaBuilder.equal(path,userName));
+                }
+                if(rank!=null&&rank!=""){
+                    Path path = root.get("rank");
+                    list.add(criteriaBuilder.equal(path,rank));
+                }
+
+                Predicate[] p = new Predicate[list.size()];
+                return criteriaBuilder.and(list.toArray(p));
+            }
+        };
     }
 }
