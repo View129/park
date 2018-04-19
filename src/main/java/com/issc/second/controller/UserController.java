@@ -29,9 +29,16 @@ public class UserController {
     //查询所有用户信息
     @RequestMapping(value = "/list",produces= "text/html;charset=UTF-8")
     @ResponseBody
-    public String userList(@RequestParam(defaultValue ="1") String page, @RequestParam(defaultValue = "10") String rows,
+    public String userList(@RequestParam(required = false)String userName,@RequestParam(required = false)String rank,
+                           @RequestParam(defaultValue ="1") String page, @RequestParam(defaultValue = "10") String rows,
                            @RequestParam(defaultValue = "id") String sort, @RequestParam(defaultValue = "asc") String order){
-        Page<User> msg = userService.userList(page,rows,sort,order);
+        System.out.println("33333333333333");
+        System.out.println("33333333333333");
+        System.out.println("33333333333333");
+        System.out.println(userName);
+        System.out.println(rank);
+
+        Page<User> msg = userService.userList(userName,rank,page,rows,sort,order);
 
         DataGrid dataGrid = new DataGrid<>();
         dataGrid.setRows(msg.getContent());
@@ -72,6 +79,10 @@ public class UserController {
     //批量删除用户
     @ResponseBody
     @RequestMapping("/delete")
+<<<<<<< HEAD
+=======
+
+>>>>>>> 8e5994c39409ddc84c39650c09c36e5535c7641a
     public String deleteUser(@RequestParam(required = false) String list){
         Msg msg = userService.deleteUser(JSON.parseArray(list,User.class));
         return JSON.toJSONString(msg);

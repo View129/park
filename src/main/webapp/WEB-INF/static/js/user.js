@@ -71,7 +71,7 @@ $(function(){
 							},
 							success : function (data){
 								$('#box').datagrid('loaded');//关闭载入动画
-								$('#box').datagrid('load');
+								$('#box').datagrid('reload');
 								$('#box').datagrid('unselectAll');//取消所有选中
 								if(data.code===0){
 									$.messager.show({
@@ -195,7 +195,7 @@ $(function(){
 							},
 							success : function (data){
 								$('#box').datagrid('loaded');
-								$('#box').datagrid('load');
+								$('#box').datagrid('reload');
 								$('#box').datagrid('unselectAll');//取消所有选中
 								if(data&&data.code===1){
 									$.messager.show({
@@ -212,7 +212,7 @@ $(function(){
 							dataType: "json",
 						});
 					} else{
-						$('#box').datagrid('load');
+						$('#box').datagrid('reload');
 						$('#box').datagrid('unselectAll');//取消所有选中
 					}
 				});
