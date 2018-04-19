@@ -3,7 +3,7 @@ package com.issc.second.entity;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.sql.Date;
 
 /**
  * 车辆进出信息

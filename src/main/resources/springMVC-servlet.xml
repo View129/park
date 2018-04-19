@@ -43,4 +43,13 @@
         <property name="cacheSeconds" value="120" />
     </bean>
 
+
+    <bean id="conversionService" class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
+        <property name="converters">
+            <list>
+                <bean class="com.issc.second.entity.DateConverter" />
+            </list>
+        </property>
+    </bean>
+    <mvc:annotation-driven conversion-service="conversionService" />
 </beans>
