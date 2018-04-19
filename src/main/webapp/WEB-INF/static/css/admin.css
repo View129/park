@@ -1,0 +1,39 @@
+.log {
+	width: 180px;
+	height: 50px;
+	line-height: 50px;
+	text-align: center;
+	font-size: 20px;
+	font-weight: bold;
+	float: left;
+	color: #fff;
+}
+.logout {
+	float: right;
+	padding: 30px 15px 0 0;
+	color: #fff;
+}
+a {
+	color: #fff;
+	text-decoration: none;
+}
+a:hover {
+	text-decoration: underline;
+}
+.ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+.ul li {
+  padding: 10px 10px;
+  cursor: pointer;
+}
+
+.ul li.selected {
+  background: #d8d8d8;
+}
+
+.ul li:HOVER {
+  background: #E0ECFF;
+}

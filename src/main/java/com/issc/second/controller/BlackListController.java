@@ -40,5 +40,4 @@ public class BlackListController {
         Msg msg =  blackListService.del(Long.parseLong(id));
         return JSON.toJSONString(msg);
     }
-
 }

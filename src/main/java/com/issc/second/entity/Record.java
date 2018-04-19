@@ -1,7 +1,9 @@
 package com.issc.second.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import javax.persistence.*;
-import java.sql.Date;
+import java.util.Date;
 
 /**
  * 车辆进出信息
@@ -21,9 +23,11 @@ public class Record {
 
     private Long exitId;
 
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date  inTime;
 
-    private Date  outTime;
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    private Date outTime;
 
     private String inImage;
 

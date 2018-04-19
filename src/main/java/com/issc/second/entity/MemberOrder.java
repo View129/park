@@ -1,7 +1,9 @@
 package com.issc.second.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import javax.persistence.*;
-import java.sql.Date;
+import java.util.Date;
 
 /**
  * 月租户订单
@@ -18,8 +20,10 @@ public class MemberOrder {
 
     private String telephone;
 
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date beginTime;
 
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date overTime;
 
     private String payStatus;
