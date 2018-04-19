@@ -69,12 +69,17 @@ public class UserController {
         return JSON.toJSONString(msg);
     }
 
-    //根据id删除用户
+    //批量删除用户
     @ResponseBody
     @RequestMapping("/delete")
+<<<<<<< HEAD
     public String deleteUser(List<Long>list){
         System.out.println(list);
         Msg msg = userService.deleteUser(list);
+=======
+    public String deleteUser(@RequestParam(required = false) String list){
+        Msg msg = userService.deleteUser(JSON.parseArray(list,User.class));
+>>>>>>> 19462aa67e5d21f404f02f4eac111d9da031539b
         return JSON.toJSONString(msg);
     }
 }

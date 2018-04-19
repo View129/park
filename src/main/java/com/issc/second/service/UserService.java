@@ -57,11 +57,18 @@ public class UserService {
     }
 
     //根据id删除用户
+<<<<<<< HEAD
     public Msg deleteUser(List<Long>list){
         Msg msg = null;
         try{
             for (int i=0;i<list.size();i++)
                 userDao.delete(list.get(i));
+=======
+    public Msg deleteUser(List<User> list){
+        Msg msg = null;
+        try{
+            userDao.delete(list);
+>>>>>>> 19462aa67e5d21f404f02f4eac111d9da031539b
         }catch(Exception e){
             msg = Msg.setError();
             return msg;
