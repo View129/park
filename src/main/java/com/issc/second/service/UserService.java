@@ -57,10 +57,10 @@ public class UserService {
     }
 
     //根据id删除用户
-    public Msg deleteUser(Long id){
+    public Msg deleteUser(List<User> list){
         Msg msg = null;
         try{
-            userDao.delete(id);
+            userDao.delete(list);
         }catch(Exception e){
             msg = Msg.setError();
             return msg;

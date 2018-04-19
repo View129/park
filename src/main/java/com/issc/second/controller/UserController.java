@@ -69,11 +69,11 @@ public class UserController {
         return JSON.toJSONString(msg);
     }
 
-    //根据id删除用户
+    //批量删除用户
     @ResponseBody
     @RequestMapping("/delete")
-    public String deleteUser(Long id){
-        Msg msg = userService.deleteUser(id);
+    public String deleteUser(@RequestParam(required = false) String list){
+        Msg msg = userService.deleteUser(JSON.parseArray(list,User.class));
         return JSON.toJSONString(msg);
     }
 }
