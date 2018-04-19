@@ -28,7 +28,8 @@ public class UserController {
     @ResponseBody
     public String userList(){
         Msg<User> msg = userService.userList();
-        return JSON.toJSONString(msg);
+        List<User>list = (List<User>) msg.getData();
+        return JSON.toJSONString(list);
     }
 
     //验证登录信息
@@ -63,37 +64,10 @@ public class UserController {
     //根据id删除用户
     @ResponseBody
     @RequestMapping("/delete")
-    public String deleteUser(Long id){
-        Msg msg = userService.deleteUser(id);
+    public String deleteUser(List<Long>list){
+        System.out.println(list);
+        Msg msg = userService.deleteUser(list);
         return JSON.toJSONString(msg);
     }
 }
 
-
-//    //根据id修改密码
-//    @RequestMapping("/updatepass")
-//    @ResponseBody
-//    public String updatePassword(Long id,String password){
-//        int count = userService.updatePassword(id,password);
-//        Msg msg = null;
-//        if(count>0){
-//            msg = Msg.SUCCESS;
-//        }else{
-//            msg = Msg.ERROR;
-//        }
-//        return JSON.toJSONString(msg);
-//    }
-//
-//    //根据id修改用户权限
-//    @RequestMapping("/updatepass")
-//    @ResponseBody
-//    public String updateRank(Long id,String rank){
-//        int count = userService.updateRank(id,rank);
-//        Msg msg = null;
-//        if(count>0){
-//            msg = Msg.SUCCESS;
-//        }else{
-//            msg = Msg.ERROR;
-//        }
-//        return JSON.toJSONString(msg);
-//    }

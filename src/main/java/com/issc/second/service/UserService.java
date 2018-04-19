@@ -57,10 +57,11 @@ public class UserService {
     }
 
     //根据id删除用户
-    public Msg deleteUser(Long id){
+    public Msg deleteUser(List<Long>list){
         Msg msg = null;
         try{
-            userDao.delete(id);
+            for (int i=0;i<list.size();i++)
+                userDao.delete(list.get(i));
         }catch(Exception e){
             msg = Msg.setError();
             return msg;
@@ -68,18 +69,4 @@ public class UserService {
         msg = Msg.setSuccess();
         return msg;
     }
-
 }
-
-
-//    //根据id修改密码
-//    public int updatePassword(Long id,String password){
-//        int count = userDao.updateUserPassword(id,password);
-//        return count;
-//    }
-//
-//    //根据id修改用户权限
-//    public int updateRank(Long id,String rank){
-//        int count = userDao.updateUserRank(id,rank);
-//        return count;
-//    }

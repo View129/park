@@ -17,17 +17,4 @@ public interface UserDao extends JpaRepository<User,Long>{
     //查询某用户是否存在
     User findByUserName(String userName);
 
-//    //根据id修改密码
-//    @Modifying
-//    @Transactional
-//    @Query(value = "UPDATE User u SET u.password = :password WHERE id=:id")
-//    int updateUserPassword(@Param("id")Long id, @Param("password") String password);
-//
-//    //根据id修改用户权限
-//    @Modifying
-//    @Transactional
-//    @Query(value = "UPDATE User u SET u.rank = :rank WHERE id=:id")
-//    int updateUserRank(@Param("id")Long id, @Param("rank") String rank);
-
-
 }
