@@ -62,10 +62,7 @@ public class UserService {
     }
 
     //根据id删除用户
-<<<<<<< HEAD
-=======
 
->>>>>>> 8e5994c39409ddc84c39650c09c36e5535c7641a
     public Msg deleteUser(List<User> list){
         Msg msg = null;
         try{
