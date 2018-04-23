@@ -43,11 +43,13 @@ public class RecordService {
                 }
                 if(inTime!=null){
                     Path path = root.get("inTime");
-                    list.add(criteriaBuilder.greaterThanOrEqualTo(path, simpleDateFormat.format(inTime)));
+                    java.sql.Date date = new java.sql.Date(inTime.getTime());
+                    list.add(criteriaBuilder.greaterThanOrEqualTo(path, date));
                 }
                 if (outTime!= null) {
                     Path path = root.get("outTime");
-                    list.add(criteriaBuilder.greaterThanOrEqualTo(path, simpleDateFormat.format(outTime)));
+                    java.sql.Date date = new java.sql.Date(outTime.getTime());
+                    list.add(criteriaBuilder.greaterThanOrEqualTo(path, date));
                 }
                 Predicate[] p = new Predicate[list.size()];
                 return criteriaBuilder.and(list.toArray(p));

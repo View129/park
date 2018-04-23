@@ -44,6 +44,7 @@
     </bean>
 
 
+
         <!--拦截器-->
         <mvc:interceptors>
                  <mvc:interceptor>
@@ -59,5 +60,16 @@
                      <bean class="com.issc.second.interceptor.UserInterceptor"></bean>
                  </mvc:interceptor>
         </mvc:interceptors>
+
+
+    <bean id="conversionService" class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
+        <property name="converters">
+            <list>
+                <bean class="com.issc.second.entity.DateConverter" />
+            </list>
+        </property>
+    </bean>
+    <mvc:annotation-driven conversion-service="conversionService" />
+
 
 </beans>

@@ -36,6 +36,10 @@
             <a href="#" class="easyui-linkbutton" iconCls="icon-search">查询</a>
         </div>
     </div>
+    <div class="field">
+        <input id="inTime" class="easyui-datetimebox" name="workdate" style="width:100%" data-options="label:'进场时间：',editable:true">
+        <button id="bt">提交</button>
+    </div>
 
 
 <script type="text/javascript">
@@ -103,6 +107,15 @@
             dataType:'json',
         })
     });
+    $("#bt").click(function () {
+        alert(1);
+        $.ajax({
+            type:'POST',
+            url:'/record/list?inTime='+$("#inTime").val(),
+        })
+    });
+
+
 
 
 
