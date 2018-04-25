@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
 
@@ -26,11 +25,7 @@ public class RecordController {
     @ResponseBody
     public String recordList(Long carId, Date inTime, Date outTime, @RequestParam(defaultValue ="1") String page, @RequestParam(defaultValue = "10") String rows,
                              @RequestParam(defaultValue = "id") String sort, @RequestParam(defaultValue = "asc") String order) throws Exception{
-//        Date inTime1 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(inTime);
-//        System.out.println(inTime1);
-       // Date outTime1 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(outTime);
         Page<Record> page1 = recordService.recordList(carId,inTime,outTime,page, rows, sort, order);
-
         DataGrid dataGrid = new DataGrid<>();
         dataGrid.setRows(page1.getContent());
         dataGrid.setTotal(page1.getTotalElements());
