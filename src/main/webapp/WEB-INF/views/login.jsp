@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<!DOCTYPE html>
 <html>
 <head>
     <title>登录</title>
@@ -42,7 +43,7 @@
                 if(data.code===0){
                     alert("账户密码不匹配！请从新登陆");
                 }else {
-                    window.location.href="https://www.2345.com";
+                    window.location.href="/html/admin.html";
                 }
             },
             dataType: "json"});

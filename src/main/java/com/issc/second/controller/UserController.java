@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @Controller
@@ -21,9 +22,10 @@ public class UserController {
     @Autowired
     UserService userService;
 
+    //登陆页面
     @RequestMapping
     public String login(){
-        return "userList";
+        return "login";
     }
 
     //查询所有用户信息
@@ -32,6 +34,10 @@ public class UserController {
     public String userList(@RequestParam(required = false)String userName,@RequestParam(required = false)String rank,
                            @RequestParam(defaultValue ="1") String page, @RequestParam(defaultValue = "10") String rows,
                            @RequestParam(defaultValue = "id") String sort, @RequestParam(defaultValue = "asc") String order){
+<<<<<<< HEAD
+=======
+
+>>>>>>> 53f61fd343dae52175aa42230a8d9572bbdbb484
         Page<User> msg = userService.userList(userName,rank,page,rows,sort,order);
 
         DataGrid dataGrid = new DataGrid<>();
@@ -44,8 +50,39 @@ public class UserController {
     //验证登录信息
     @RequestMapping("/login")
     @ResponseBody
-    public String login(String userName,String password){
-        Msg<User> msg = userService.login(userName,password);
+    public String login(User user,HttpSession httpSession){
+        Msg<User> msg = userService.login(user.getUserName(),user.getPassword());
+        if(msg.getCode()==1){
+            httpSession.setAttribute("user",user);
+        }
+        return JSON.toJSONString(msg);
+    }
+    //ajax获取登陆的用户
+    @RequestMapping("/session")
+    @ResponseBody
+    public String seesion(HttpSession httpSession){
+        User user = (User) httpSession.getAttribute("user");
+        Msg<User> msg;
+        if(user!=null){
+            msg = Msg.setSuccess();
+        }else {
+            msg = Msg.setError();
+        }
+        msg.setData((User) httpSession.getAttribute("user"));
+        return JSON.toJSONString(msg);
+    }
+    //ajax退出登陆
+    @RequestMapping("/exit")
+    @ResponseBody
+    public String exit(HttpSession httpSession){
+        User user = (User) httpSession.getAttribute("user");
+        Msg<User> msg;
+        if(user!=null){
+            httpSession.setAttribute("user",null);
+            msg = Msg.setSuccess();
+        }else {
+            msg = Msg.setError();
+        }
         return JSON.toJSONString(msg);
     }
 
@@ -73,9 +110,15 @@ public class UserController {
     //批量删除用户
     @ResponseBody
     @RequestMapping("/delete")
+<<<<<<< HEAD
+=======
+
+>>>>>>> 53f61fd343dae52175aa42230a8d9572bbdbb484
     public String deleteUser(@RequestParam(required = false) String list){
         Msg msg = userService.deleteUser(JSON.parseArray(list,User.class));
         return JSON.toJSONString(msg);
     }
+
+
 }
 
