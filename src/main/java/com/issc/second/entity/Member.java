@@ -1,6 +1,10 @@
 package com.issc.second.entity;
 
+import com.alibaba.fastjson.annotation.JSONField;
+
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 月租户
@@ -18,6 +22,18 @@ public class Member {
     private String memberName;
 
     private String description;
+
+    @OneToMany(mappedBy = "member",cascade = CascadeType.ALL)
+    @JSONField(serialize=false)
+    private List<MemberCar> list ;
+
+    public List<MemberCar> getList() {
+        return list;
+    }
+
+    public void setList(List<MemberCar> list) {
+        this.list = list;
+    }
 
     public Long getId() {
         return id;

@@ -62,7 +62,6 @@ public class UserService {
     }
 
     //根据id删除用户
-
     public Msg deleteUser(List<User> list){
         Msg msg = null;
         try{
@@ -76,7 +75,7 @@ public class UserService {
     }
 
 
-
+    //组合查询
     private Specification<User> getWhere(String userName,String rank){
         return new Specification<User>() {
             @Override

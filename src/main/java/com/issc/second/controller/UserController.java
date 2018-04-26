@@ -36,7 +36,6 @@ public class UserController {
     public String userList(@RequestParam(required = false)String userName,@RequestParam(required = false)String rank,
                            @RequestParam(defaultValue ="1") String page, @RequestParam(defaultValue = "10") String rows,
                            @RequestParam(defaultValue = "id") String sort, @RequestParam(defaultValue = "asc") String order){
-
         Page<User> msg = userService.userList(userName,rank,page,rows,sort,order);
 
         DataGrid dataGrid = new DataGrid<>();
@@ -110,11 +109,11 @@ public class UserController {
     @ResponseBody
     @RequestMapping("/delete")
 
+
     public String deleteUser(@RequestBody List<User> list){
         /*@RequestParam(required = false) String list
         Msg msg = userService.deleteUser(JSON.parseArray(list,User.class));*/
         Msg msg = userService.deleteUser(list);
-
         return JSON.toJSONString(msg);
     }
 
