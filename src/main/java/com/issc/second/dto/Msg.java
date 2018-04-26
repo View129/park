@@ -1,7 +1,4 @@
-package com.issc.second.entity;
-
-import java.util.HashMap;
-import java.util.Map;
+package com.issc.second.dto;
 
 public class Msg<T>{
 

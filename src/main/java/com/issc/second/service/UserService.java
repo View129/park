@@ -1,7 +1,7 @@
 package com.issc.second.service;
 
 import com.issc.second.dao.UserDao;
-import com.issc.second.entity.Msg;
+import com.issc.second.dto.Msg;
 import com.issc.second.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -11,7 +11,6 @@ import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.data.jpa.domain.Specifications;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.persistence.criteria.*;
 import java.util.ArrayList;

@@ -1,13 +1,14 @@
 package com.issc.second.controller;
 
 import com.alibaba.fastjson.JSON;
-import com.issc.second.entity.DataGrid;
-import com.issc.second.entity.Msg;
+import com.issc.second.dto.DataGrid;
+import com.issc.second.dto.Msg;
 import com.issc.second.entity.User;
 import com.issc.second.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -106,8 +107,12 @@ public class UserController {
     //批量删除用户
     @ResponseBody
     @RequestMapping("/delete")
-    public String deleteUser(@RequestParam(required = false) String list){
-        Msg msg = userService.deleteUser(JSON.parseArray(list,User.class));
+
+
+    public String deleteUser(@RequestBody List<User> list){
+        /*@RequestParam(required = false) String list
+        Msg msg = userService.deleteUser(JSON.parseArray(list,User.class));*/
+        Msg msg = userService.deleteUser(list);
         return JSON.toJSONString(msg);
     }
 
