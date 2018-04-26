@@ -11,7 +11,7 @@ public class UserInterceptor implements HandlerInterceptor {
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object o) throws Exception {
         Object user = request.getSession().getAttribute("user");
                  if (user == null) {
-                         System.out.println("尚未登录，调到登录页面");
+                         System.out.println("尚未登录，调到登录页面111111111111111111111111111111");
                          response.sendRedirect("/user");
                          return false;
                      }

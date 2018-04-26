@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+	<title></title>
+	<script type="text/javascript" src="/resources/easyui/jquery.min.js"></script>
+    <!-- 2    css资源 -->
+    <link rel="stylesheet" type="text/css" href="/resources/easyui/themes/default/easyui.css">
+    <!-- 3    图标资源 -->
+    <link rel="stylesheet" type="text/css" href="/resources/easyui/themes/icon.css">
+    <!-- 4    EasyUI的js包 -->
+    <script type="text/javascript" src="/resources/easyui/jquery.easyui.min.js"></script>
+    <!-- 5    本地语言 -->
+    <script type="text/javascript" src="/resources/easyui/locale/easyui-lang-zh_CN.js"></script>
+
+    <script type="text/javascript" src="/resources/js/member.js"></script>
+    <link rel="stylesheet" type="text/css" href="/resources/css/member.css">
+</head>
+<body>
+
+<table id="box" ></table>
+
+<div id="tb">
+    <div>
+        <a href="#" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="obj.add();">添加</a>
+        <a href="#" class="easyui-linkbutton" iconCls="icon-edit" plain="true" onclick="obj.edit();">修改</a>
+        <a href="#" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="obj.remove();">删除</a>
+        <a href="#" class="easyui-linkbutton" iconCls="icon-save" plain="true" style="display: none" id="save" onclick="obj.save();">保存</a>
+        <a href="#" class="easyui-linkbutton" iconCls="icon-redo" plain="true" style="display: none" id="redo" onclick="obj.redo();">取消编辑</a>
+    </div> 
+    <div>
+        姓名：<input type="text" class="textbox" name="memberName">
+        电话：<input type="text" class="textbox" name="telephone">
+        <a href="#" class="easyui-linkbutton" iconCls="icon-search" onclick="obj.search();">查询</a>
+    </div>
+    
+</div>
+</body>
+</html>

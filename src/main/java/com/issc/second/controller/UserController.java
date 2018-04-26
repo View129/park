@@ -8,11 +8,13 @@ import com.issc.second.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -108,8 +110,11 @@ public class UserController {
     @ResponseBody
     @RequestMapping("/delete")
 
-    public String deleteUser(@RequestParam(required = false) String list){
-        Msg msg = userService.deleteUser(JSON.parseArray(list,User.class));
+    public String deleteUser(@RequestBody List<User> list){
+        /*@RequestParam(required = false) String list
+        Msg msg = userService.deleteUser(JSON.parseArray(list,User.class));*/
+        Msg msg = userService.deleteUser(list);
+
         return JSON.toJSONString(msg);
     }
 

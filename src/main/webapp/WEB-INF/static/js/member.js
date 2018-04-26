@@ -3,8 +3,8 @@ $(function(){
 	obj = {
 		editrow : undefined,//添加的标记变量
 		search : function (){$('#box').datagrid('load',{
-				userName : $.trim($("input[name='userName']").val()),
-				rank : $.trim($("input[name='rank']").val()),
+				memberName : $.trim($("input[name='memberName']").val()),
+				telephone : $.trim($("input[name='telephone']").val()),
 			});
 		},
 		add : function (){ //添加功能
@@ -101,8 +101,8 @@ $(function(){
 
 	$("#box").datagrid({
 		//width:100,
-		url : '/user/list',
-		title:'管理员列表',
+		url : '/member/list',
+		title:'月租户列表',
 		iconCls : 'icon-search',
 		striped : true,//斑马线效果
 		fitColumns : true,//列自适应大小
@@ -115,8 +115,8 @@ $(function(){
 				checkbox : true,
             },
 			{
-				field : 'userName',
-				title : '账号',
+				field : 'memberName',
+				title : '租户姓名',
 				sortable : true, //排序
 				//align: 'center',//标题内容居中
 				halign : 'center',//标题居中
@@ -129,8 +129,8 @@ $(function(){
 				},
 			},
 			{
-				field : 'password',
-				title : '密码',
+				field : 'telephone',
+				title : '电话',
 				sortable : true,
                 halign : 'center',//标题居中
 				width : 100,//100%
@@ -143,8 +143,8 @@ $(function(){
 
 			},
 			{
-				field : 'rank',
-				title : '权限',
+				field : 'description',
+				title : '描述',
 				sortable : true,
                 halign : 'center',//标题居中
 				width : 100,//100%

@@ -62,6 +62,7 @@
         </mvc:interceptors>
 
 
+    <!--时间格式转换-->
     <bean id="conversionService" class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
         <property name="converters">
             <list>

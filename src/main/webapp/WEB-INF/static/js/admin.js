@@ -17,7 +17,7 @@ $(function(){
     	$('#tabs').tabs('add',{
     		title: $(this).text(),
     		closable: true,
-        content:'<iframe name="indextab" scrolling="auto" src="'+$(this).attr('data-url')+'" frameborder="0" style="width:100%;height:100%;"></iframe>',
+        content:'<iframe name="indextab" scrolling="auto" src="'+$(this).attr('data-url')+'" frameborder="0"  marginwidth="0";marginheight="0" style="width:100%;height:100%;"></iframe>',
     	});
     }
   });
