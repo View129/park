@@ -1,4 +1,4 @@
-package com.issc.second.entity;
+package com.issc.second.dto;
 
 public class DataGrid<T> {
     private Long total;

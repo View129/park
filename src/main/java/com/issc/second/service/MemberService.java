@@ -2,7 +2,7 @@ package com.issc.second.service;
 
 import com.issc.second.dao.MemberDao;
 import com.issc.second.entity.Member;
-import com.issc.second.entity.Msg;
+import com.issc.second.dto.Msg;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;

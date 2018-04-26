@@ -1,7 +1,7 @@
 package com.issc.second.controller;
 
 import com.alibaba.fastjson.JSON;
-import com.issc.second.entity.Msg;
+import com.issc.second.dto.Msg;
 import com.issc.second.entity.TemporaryOrder;
 import com.issc.second.service.TemporaryOrderService;
 import org.springframework.beans.factory.annotation.Autowired;

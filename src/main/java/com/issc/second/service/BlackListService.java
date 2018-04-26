@@ -2,11 +2,9 @@ package com.issc.second.service;
 
 import com.issc.second.dao.BlackListDao;
 import com.issc.second.entity.BlackList;
-import com.issc.second.entity.Msg;
+import com.issc.second.dto.Msg;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 @Service
 public class BlackListService {

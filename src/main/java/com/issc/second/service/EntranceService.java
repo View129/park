@@ -2,7 +2,7 @@ package com.issc.second.service;
 
 import com.issc.second.dao.EntranceDao;
 import com.issc.second.entity.Entrance;
-import com.issc.second.entity.Msg;
+import com.issc.second.dto.Msg;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

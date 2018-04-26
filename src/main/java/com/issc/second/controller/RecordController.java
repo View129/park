@@ -1,7 +1,7 @@
 package com.issc.second.controller;
 
 import com.alibaba.fastjson.JSON;
-import com.issc.second.entity.DataGrid;
+import com.issc.second.dto.DataGrid;
 import com.issc.second.entity.Record;
 import com.issc.second.service.RecordService;
 import org.springframework.beans.factory.annotation.Autowired;
