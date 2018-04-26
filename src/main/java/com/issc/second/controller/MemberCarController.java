@@ -19,7 +19,7 @@ public class MemberCarController {
     MemberCarService memberCarService;
 
     //显示租户车辆信息
-    @RequestMapping("/list")
+    @RequestMapping(value = "/list",produces="text/html;charset=UTF-8")
     @ResponseBody
     public String list(){
         Msg msg = memberCarService.list();

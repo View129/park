@@ -20,12 +20,6 @@ public class MemberOrder {
 
     private String telephone;
 
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    private Date beginTime;
-
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    private Date overTime;
-
     private String payStatus;
 
     public Long getId() {
@@ -50,22 +44,6 @@ public class MemberOrder {
 
     public void setTelephone(String telephone) {
         this.telephone = telephone;
-    }
-
-    public Date getBeginTime() {
-        return beginTime;
-    }
-
-    public void setBeginTime(Date beginTime) {
-        this.beginTime = beginTime;
-    }
-
-    public Date getOverTime() {
-        return overTime;
-    }
-
-    public void setOverTime(Date overTime) {
-        this.overTime = overTime;
     }
 
     public String getPayStatus() {

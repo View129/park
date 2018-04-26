@@ -34,10 +34,6 @@ public class UserController {
     public String userList(@RequestParam(required = false)String userName,@RequestParam(required = false)String rank,
                            @RequestParam(defaultValue ="1") String page, @RequestParam(defaultValue = "10") String rows,
                            @RequestParam(defaultValue = "id") String sort, @RequestParam(defaultValue = "asc") String order){
-<<<<<<< HEAD
-=======
-
->>>>>>> 53f61fd343dae52175aa42230a8d9572bbdbb484
         Page<User> msg = userService.userList(userName,rank,page,rows,sort,order);
 
         DataGrid dataGrid = new DataGrid<>();
@@ -110,10 +106,6 @@ public class UserController {
     //批量删除用户
     @ResponseBody
     @RequestMapping("/delete")
-<<<<<<< HEAD
-=======
-
->>>>>>> 53f61fd343dae52175aa42230a8d9572bbdbb484
     public String deleteUser(@RequestParam(required = false) String list){
         Msg msg = userService.deleteUser(JSON.parseArray(list,User.class));
         return JSON.toJSONString(msg);

@@ -46,20 +46,20 @@
 
 
         <!--拦截器-->
-        <mvc:interceptors>
-                 <mvc:interceptor>
-                     <!-- 拦截所有URL的请求 -->
-                    <mvc:mapping path="/**"/>
-                     <!--不拦截的url-->
-                     <mvc:exclude-mapping path="/user" />
-                     <mvc:exclude-mapping path="/user/login" />
-                     <mvc:exclude-mapping path="/user/session" />
-                     <mvc:exclude-mapping path="/user/exit" />
-                     <mvc:exclude-mapping path="/resources/**" />
+        <!--<mvc:interceptors>-->
+                 <!--<mvc:interceptor>-->
+                     <!--&lt;!&ndash; 拦截所有URL的请求 &ndash;&gt;-->
+                    <!--<mvc:mapping path="/**"/>-->
+                     <!--&lt;!&ndash;不拦截的url&ndash;&gt;-->
+                     <!--<mvc:exclude-mapping path="/user" />-->
+                     <!--<mvc:exclude-mapping path="/user/login" />-->
+                     <!--<mvc:exclude-mapping path="/user/session" />-->
+                     <!--<mvc:exclude-mapping path="/user/exit" />-->
+                     <!--<mvc:exclude-mapping path="/resources/**" />-->
 
-                     <bean class="com.issc.second.interceptor.UserInterceptor"></bean>
-                 </mvc:interceptor>
-        </mvc:interceptors>
+                     <!--<bean class="com.issc.second.interceptor.UserInterceptor"></bean>-->
+                 <!--</mvc:interceptor>-->
+        <!--</mvc:interceptors>-->
 
 
     <bean id="conversionService" class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
