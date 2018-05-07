@@ -12,7 +12,7 @@ public class MemberAndMemberCar {
     private String description;
 
 
-    private Long id;
+    //private Long id;
 
     private String carId;
 
@@ -20,7 +20,7 @@ public class MemberAndMemberCar {
 
     private String carColor;
 
-    private String description;
+    //private String description;
 
 
     private Date beginTime;

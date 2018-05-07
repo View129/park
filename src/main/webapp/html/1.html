@@ -1,0 +1,38 @@
+<html>
+<head>
+    <title>Title</title>
+    <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+</head>
+<body>
+姓名：<input type="text" id="name"><br>
+接收消息：<textarea id="get" style="height:100px;"></textarea><br>
+发送消息：<textarea id="send" style="height:100px;"></textarea><br>
+<button id="bt">发送</button>
+
+
+<script type="text/javascript">
+
+var ws=new WebSocket("ws://localhost:8080/websocket");;
+$("#bt").click(function(){
+        ws.send($("#send").val());
+});
+
+ws.onopen = function () {
+  console.log("onpen");
+  ws.send($("#send").val());
+ }
+
+ws.onclose = function () {
+    console.log("onclose");
+}
+
+ws.onmessage = function (msg) {
+    console.log(msg);
+    $("#get").val(msg.data);
+}
+
+
+
+</script>
+</body>
+</html>
